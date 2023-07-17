@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 기초 익히기</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    {{nextYear("반갑습니다.")}}
+    <!-- 아래와 같이 v-bind를 쓰면 내가 원하는 데이터를 바인딩(연결)할 수 있습니다. -->
+    <!-- 대부분의 html속성들은 아래와 같이 바인딩이 가능합니다. -->
+    <!-- 또한 아래와 같이 v-bind를 생략하고 : 만 붙여도 데이터 바인딩이 가능합니다. -->
+    <input :type="inputInfo.type" v-bind:value="inputInfo.inputData">
+    <a :href="goNaver">네이버 바로가기</a>
+  </div>
+
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        person: {
+          name: "정수현",
+          age: 34
+        },
+
+        inputInfo: {
+          inputData: "Hello",
+          type: "number"
+        },
+
+        goNaver: "https://www.naver.com"
+      },
+      methods: {
+        nextYear: function (message) {
+          return `${message + this.person.name} 은 내년에 ${this.person.age + 1} 살 입니다.`
+        },
+        test() {
+          this.nextYear()
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
