@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 기초 익히기</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    {{person.name}} {{person.age}}
+    {{nextYear("반갑습니다.")}}
+  </div>
+
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        // 아래와 같이 오브젝트를 생성하여 사용할 수도 있습니다.
+        person: {
+          name: "정수현",
+          age: 34
+        }
+      },
+      // Vue에서는 원하는 함수를 methods에 선언해줍니다.
+      methods: {
+        // 아래와 같이 function 키워드를 사용해주어도 되지만
+        nextYear: function (message) {
+          return `${message + this.person.name} 은 내년에 ${this.person.age + 1} 살 입니다.`
+        },
+        // 아래와 같이 function 키워드를 생략해줄 수 있습니다.
+        test() {
+          this.nextYear()
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
